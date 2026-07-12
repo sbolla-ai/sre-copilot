@@ -1,0 +1,50 @@
+flowchart LR
+    subgraph Sources["Alert Sources"]
+        PD[PagerDuty]
+        AM[Alertmanager]
+        WH[Custom Webhooks]
+    end
+
+    subgraph Copilot["SRE Copilot"]
+        ING[Ingest & Normalize]
+        REACT[Bounded ReAct Loop<br/>cost + time capped]
+        RANK[Hypothesis Ranker]
+        GUARD[Policy Guardrails<br/>allowlist + approvals]
+    end
+
+    subgraph MCP["MCP Tool Servers"]
+        PROM[Prometheus MCP]
+        LOKI[Loki MCP]
+        TEMPO[Tempo MCP]
+        K8S[Kubernetes MCP]
+        RB[Runbook MCP]
+    end
+
+    subgraph Humans["Operators"]
+        SLACK[Slack Approval]
+        DASH[Web Dashboard]
+    end
+
+    subgraph Learning["Learning Loop"]
+        KB[Incident KB]
+        EVAL[Eval Harness]
+    end
+
+    PD --> ING
+    AM --> ING
+    WH --> ING
+    ING --> REACT
+    REACT <--> PROM
+    REACT <--> LOKI
+    REACT <--> TEMPO
+    REACT <--> K8S
+    REACT --> RANK
+    RANK --> GUARD
+    GUARD -->|proposed actions| SLACK
+    GUARD -->|autonomous whitelist| K8S
+    GUARD -->|autonomous whitelist| RB
+    SLACK -->|approve| RB
+    DASH --- REACT
+    REACT --> KB
+    KB --> EVAL
+    EVAL -.regression signal.-> REACT
