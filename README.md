@@ -1,3 +1,5 @@
+> Personal, open-source rebuild of the agentic triage pattern I built in production at SMBC. This repo is a work in progress and is not the production system.
+
 # SRE Copilot
 
 > **Agentic incident response for production SRE teams.** An LLM-powered copilot that triages alerts, correlates signals across your observability stack via MCP, proposes a ranked set of hypotheses, and — with human approval — executes safe remediation runbooks. Built to cut MTTR, not to replace on-call.
@@ -5,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](pyproject.toml)
 [![MCP](https://img.shields.io/badge/MCP-production--tested-purple.svg)](#architecture)
-[![Status](https://img.shields.io/badge/status-active-success.svg)](#roadmap)
+[![Status](https://img.shields.io/badge/status-work_in_progress-yellow.svg)](#roadmap)
 
 ---
 
@@ -13,7 +15,7 @@
 
 On-call is broken in three specific ways: alerts arrive faster than humans can correlate them, tribal knowledge lives in Slack threads no one can find at 3 a.m., and the same five incidents recur because post-mortems don't turn into automation. SRE Copilot is a working answer — an agent loop that reads the same telemetry a human SRE would, reasons over it with an LLM constrained by MCP tool schemas, and only ever *proposes* actions until an operator approves them.
 
-Built from lessons shipping Agentic AI in production at a global bank — one of fewer than 50 teams worldwide running MCP against real customer-facing systems.
+A personal, open-source rebuild of the agentic triage pattern I built in production at SMBC. This repo is a work in progress and is not the production system.
 
 ## What it does
 
@@ -68,7 +70,7 @@ uv run sre-copilot eval --suite basic --model gpt-4o
 
 ## About the author
 
-I'm **Sreenivas Bolla** — Principal SRE & Platform Engineer with 16+ years building production platforms at **JPMorgan Chase, Capital One, and SMBC**. I've shipped internal developer platforms, SLO governance systems, and Agentic AI in production — and I'm one of fewer than 50 engineers worldwide running MCP against real customer-facing systems, where it's cut MTTR by 75%.
+I'm **Sreenivas Bolla**, a Forward Deployed Engineer taking enterprise AI from prototype to governed production at SMBC, after SRE roles at Capital One and JPMorgan Chase. At SMBC I built a production agentic SRE copilot that cut MTTR 75%; this repo is my personal rebuild of that pattern.
 
 SRE Copilot is the open-source distillation of the patterns I've seen actually work in a regulated enterprise. I also work 1:1 with staff / principal engineers on the projects and portfolios that get them into the rooms they want to be in.
 
